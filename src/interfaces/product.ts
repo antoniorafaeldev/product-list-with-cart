@@ -1,6 +1,13 @@
-export interface Product {
-  image: string;
+interface Image {
+  thumbnail: string;
+  mobile: string;
+  tablet: string;
+  desktop: string;
+}
+
+export interface ProductProps {
+  image: Image ;
   category: string;
-  title: string;
-  price: string;
+  name: string;
+  price: number;
 }

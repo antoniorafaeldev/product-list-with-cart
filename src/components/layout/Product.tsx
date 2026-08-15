@@ -1,12 +1,12 @@
-import type { Product } from "../../interfaces/product";
+import type { ProductProps } from "../../interfaces/product";
 
-export function Product({ image, category, title, price }: Product) {
+export function Product({ image, category, name, price }: ProductProps) {
   return (
     <div>
-      <img src={image} alt={`Imagem of ${image}`} />
+      <img src={image.mobile} alt={`Imagem of ${name}`} />
       <button>Add to Cart</button>
       <span>{category}</span>
-      <h2>{title}</h2>
+      <h2>{name}</h2>
       <span>${price}</span>
     </div>
   );
