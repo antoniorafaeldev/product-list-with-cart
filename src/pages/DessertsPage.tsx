@@ -3,8 +3,8 @@ import data from "../data/data.json";
 
 export function DessertsPage() {
   return (
-    <section>
-      <h1>Desserts</h1>
+    <section className="bg-rose-100 p-4">
+      <h1 className="text-rose-950 font-bold text-3xl mb-6">Desserts</h1>
       {data.map(({ image, name, category, price }) => (
         <Product
           key={name}
