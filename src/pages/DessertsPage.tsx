@@ -1,3 +1,4 @@
+import { Cart } from "../components/layout/Cart";
 import { Product } from "../components/layout/Product";
 import data from "../data/data.json";
 
@@ -14,6 +15,7 @@ export function DessertsPage() {
           price={price}
         />
       ))}
+      <Cart />
     </section>
   );
 }
