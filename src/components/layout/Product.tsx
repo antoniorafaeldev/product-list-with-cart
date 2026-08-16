@@ -5,7 +5,7 @@ export function Product({ image, category, name, price }: ProductProps) {
   return (
     <div className="py-2">
       <img
-        className="rounded-lg lg:w-2xs"
+        className="rounded-lg lg:w-xs xl:w-2xs"
         src={image.mobile}
         alt={`Imagem of ${name}`}
       />
