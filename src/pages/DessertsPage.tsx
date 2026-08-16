@@ -4,17 +4,21 @@ import data from "../data/data.json";
 
 export function DessertsPage() {
   return (
-    <section className="bg-rose-100 p-4">
-      <h1 className="text-rose-950 font-bold text-3xl mb-6">Desserts</h1>
-      {data.map(({ image, name, category, price }) => (
-        <Product
-          key={name}
-          image={image}
-          category={category}
-          name={name}
-          price={price}
-        />
-      ))}
+    <section className="bg-rose-100 p-4 lg:flex lg:pl-10 xl:justify-center">
+      <div>
+        <h1 className="text-rose-950 font-bold text-3xl mb-6">Desserts</h1>
+        <div className="lg:flex lg:gap-4 lg:flex-wrap lg:max-w-4xl">
+          {data.map(({ image, name, category, price }) => (
+            <Product
+              key={name}
+              image={image}
+              category={category}
+              name={name}
+              price={price}
+            />
+          ))}
+        </div>
+      </div>
       <Cart />
     </section>
   );
