@@ -1,8 +1,35 @@
+import { useState } from "react";
 import { Cart } from "../components/layout/Cart";
 import { Product } from "../components/layout/Product";
 import data from "../data/data.json";
+import type { cartItem } from "../interfaces/cartItem";
 
 export function DessertsPage() {
+  const [cart, setCart] = useState<cartItem[]>([]);
+
+  const addToCart = (product: cartItem) => {
+    console.log(cart)
+    setCart((previousCart) => {
+      const itemExists = previousCart.some(
+        (item) => item.name === product.name,
+      );
+
+      if (!itemExists) {
+        return [...previousCart, product];
+      }
+
+      return previousCart.map((item) => {
+        if (item.name === product.name) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+          };
+        }
+
+        return item;
+      });
+    });
+  };
   return (
     <section className="bg-rose-100 p-4 md:flex md:gap-8 md:justify-center  lg:gap-4 lg:pl-10 ">
       <div>
@@ -15,6 +42,9 @@ export function DessertsPage() {
               category={category}
               name={name}
               price={price}
+              onAddToCart={() => {
+                addToCart({name, quantity: 1, unitPrice: price})
+              }}
             />
           ))}
         </div>

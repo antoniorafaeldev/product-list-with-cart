@@ -10,4 +10,5 @@ export interface ProductProps {
   category: string;
   name: string;
   price: number;
+  onAddToCart: () => void;
 }
