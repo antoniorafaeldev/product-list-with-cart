@@ -13,3 +13,6 @@
     --color-green-500: hsl(159, 69%, 38%);
 }
 
+body {
+    font-family: "Red Hat Text"
+}
