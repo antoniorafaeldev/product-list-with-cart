@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Cart } from "../components/layout/Cart";
 import { Product } from "../components/layout/Product";
 import data from "../data/data.json";
-import type { cartItem } from "../interfaces/cartItem";
+import type { CartItem } from "../interfaces/cartItem";
 
 export function DessertsPage() {
-  const [cart, setCart] = useState<cartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
-  const addToCart = (product: cartItem) => {
-    console.log(cart)
+  const addToCart = (product: CartItem) => {
+    console.log(cart);
     setCart((previousCart) => {
       const itemExists = previousCart.some(
         (item) => item.name === product.name,
@@ -43,13 +43,13 @@ export function DessertsPage() {
               name={name}
               price={price}
               onAddToCart={() => {
-                addToCart({name, quantity: 1, unitPrice: price})
+                addToCart({ name, quantity: 1, unitPrice: price });
               }}
             />
           ))}
         </div>
       </div>
-      <Cart />
+      <Cart cart={cart}/>
     </section>
   );
 }
