@@ -4,7 +4,14 @@ export function Cart({ cart }: Cart) {
   return (
     <section className="bg-rose-50 p-4 px-6 rounded-lg md:h-fit">
       <div>
-        <h2 className="text-red-500 text-2xl font-bold mb-8">Your Cart ({cart.length})</h2>
+        <h2 className="text-red-500 text-2xl font-bold mb-8">
+          Your Cart (
+          {cart.reduce(
+            (total, currentValue) => total + currentValue.quantity,
+            0,
+          )}
+          )
+        </h2>
         <img
           className="m-auto"
           src="./assets/images/illustration-empty-cart.svg"
@@ -48,16 +55,24 @@ export function Cart({ cart }: Cart) {
         <span>Order Total</span>
         <output className="font-bold text-xl text-rose-900">
           $
-          {cart.reduce(
-            (total, currentValue) =>
-              total + currentValue.quantity * currentValue.unitPrice,
-            0,
-          ).toFixed(2)}
+          {cart
+            .reduce(
+              (total, currentValue) =>
+                total + currentValue.quantity * currentValue.unitPrice,
+              0,
+            )
+            .toFixed(2)}
         </output>
       </div>
       <div className="flex text-sm gap-1 p-4 justify-center mb-4 bg-rose-100 rounded-lg">
-        <img src="./assets/images/icon-carbon-neutral.svg" alt="Icon of carbon neutral delivery" />
-        <p className="text-rose-500">This is a <strong className="text-rose-900">carbon neutral</strong> delivery</p>
+        <img
+          src="./assets/images/icon-carbon-neutral.svg"
+          alt="Icon of carbon neutral delivery"
+        />
+        <p className="text-rose-500">
+          This is a <strong className="text-rose-900">carbon neutral</strong>{" "}
+          delivery
+        </p>
       </div>
       <button className="p-3 cursor-pointer text-white bg-red-500 w-full rounded-xl font-medium transition-all duration-300 hover:bg-rose-500  hover:scale-101 active:scale-95">
         Confirm Order
