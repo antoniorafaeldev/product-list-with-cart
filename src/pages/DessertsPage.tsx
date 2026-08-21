@@ -30,6 +30,16 @@ export function DessertsPage() {
       });
     });
   };
+
+  const removeFromCart = (name: string) =>{
+
+    setCart(previousCart => {
+        const updatedCart = previousCart.filter(item => item.name !== name)
+
+        return updatedCart
+    })
+  }
+
   return (
     <section className="bg-rose-100 p-4 md:flex md:gap-8 md:justify-center  lg:gap-4 lg:pl-10 ">
       <div>
@@ -49,7 +59,7 @@ export function DessertsPage() {
           ))}
         </div>
       </div>
-      <Cart cart={cart}/>
+      <Cart cart={cart} onItemRemoval={(name) => removeFromCart(name)}/>
     </section>
   );
 }

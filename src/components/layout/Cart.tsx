@@ -1,6 +1,6 @@
 import type { Cart } from "../../interfaces/cart";
 
-export function Cart({ cart }: Cart) {
+export function Cart({ cart, onItemRemoval }: Cart) {
   return (
     <section className="bg-rose-50 p-4 px-6 rounded-lg md:h-fit">
       <div>
@@ -24,7 +24,10 @@ export function Cart({ cart }: Cart) {
       <div>
         {cart.map((product) => {
           return (
-            <div className="flex justify-between items-center border-b border-b-rose-100 py-2">
+            <div
+              key={product.name}
+              className="flex justify-between items-center border-b border-b-rose-100 py-2"
+            >
               <div className="">
                 <h3 className="text-md font-rose-900 font-semibold mb-1">
                   {product.name}
@@ -40,7 +43,10 @@ export function Cart({ cart }: Cart) {
                 </span>
               </div>
               <div>
-                <button className="cursor-pointer rounded-full border border-rose-500 p-1 ">
+                <button
+                  onClick={() => onItemRemoval(product.name)}
+                  className="cursor-pointer rounded-full border border-rose-500 p-1 "
+                >
                   <img
                     src="./assets/images/icon-remove-item.svg"
                     alt="Icon for removing items"
